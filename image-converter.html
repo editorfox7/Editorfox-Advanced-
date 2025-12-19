@@ -3,85 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Converter – EditorFox</title>
-<meta name="description" content="Convert images between formats quickly and efficiently.">
+<title>Image Converter Online – EditorFox</title>
+<meta name="description" content="Convert images online to JPG, PNG, WEBP instantly. Free client-side image converter.">
+<meta property="og:title" content="Image Converter – EditorFox">
+<meta property="og:description" content="Convert images online to JPG, PNG, WEBP instantly. Free client-side image converter.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--white:#fff;--grey:#f3f3f3;--dark:#111;--muted:#666;}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e6e6e6;z-index:100;}
-.nav{max-width:1200px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-size:20px;font-weight:700;display:flex;gap:8px;align-items:center;}
-nav a{margin-left:20px;font-weight:500;color:#333;}
-
-.tool-hero{padding:70px 20px;text-align:center;background:var(--grey);}
-.tool-hero h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:12px;}
-.tool-hero p{max-width:650px;margin:auto;color:var(--muted);margin-bottom:30px;}
-.tool-form{max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06);}
-.tool-form label{display:block;margin-bottom:8px;font-weight:500;}
-.tool-form input, .tool-form select{width:100%;padding:12px;margin-bottom:16px;border-radius:8px;border:1px solid #ccc;font-size:14px;}
-.tool-form button{padding:12px 24px;border-radius:40px;font-weight:600;border:none;background:var(--dark);color:#fff;cursor:pointer;transition:.3s;}
-.tool-form button:hover{background:#000;}
-footer{background:#eaeaea;padding:50px 20px 20px;}
-footer .container{max-width:1200px;margin:auto;display:grid;gap:14px;}
-.footer-bottom{text-align:center;margin-top:20px;font-size:14px;color:#555;}
+:root{--white:#fff;--grey:#f4f4f4;--dark:#111;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);margin:0;padding:0;}
+header{position:sticky;top:0;background:var(--white);border-bottom:1px solid #eee;z-index:100;}
+.nav{max-width:1200px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-weight:700;font-size:20px;}
+nav a{margin-left:20px;color:var(--dark);font-weight:500;}
+nav a:hover{color:#000;}
+.tool-hero{padding:60px 20px;text-align:center;background:var(--grey);}
+.tool-hero h1{font-size:clamp(28px,5vw,40px);margin-bottom:12px;}
+.tool-hero p{color:#666;max-width:650px;margin:auto;margin-bottom:30px;}
+.converter-container{max-width:800px;margin:auto;padding:20px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);}
+.upload-area{border:2px dashed #ccc;border-radius:16px;padding:30px;text-align:center;cursor:pointer;position:relative;transition:.3s;}
+.upload-area input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;}
+.upload-area.dragover{border-color:#000;background:rgba(0,0,0,.05);}
+.image-preview{margin-top:20px;text-align:center;}
+.image-preview img{max-width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08);}
+button{margin-top:20px;padding:12px 24px;border-radius:40px;border:none;background:#000;color:#fff;cursor:pointer;font-weight:600;transition:.3s;}
+button:hover{background:#111;}
+footer{background:#eaeaea;padding:50px 20px;text-align:center;font-size:14px;color:#555;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">🦊 EditorFox</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#tools">Tools</a>
-      <a href="mailto:editorfox.ef@gmail.com">Contact</a>
-    </nav>
-  </div>
+<div class="nav">
+<div class="logo">🦊 EditorFox</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="mailto:editorfox.ef@gmail.com">Contact</a>
+</nav>
+</div>
 </header>
 
 <section class="tool-hero">
-<h1>Image Converter</h1>
-<p>Convert images between formats quickly and efficiently.</p>
+<h1>Online Image Converter</h1>
+<p>Convert JPG, PNG, WEBP images instantly online. Client-side, fast, and free. Download converted images without uploading to server.</p>
 </section>
 
-<section class="tool-form">
-<form id="toolForm">
-<label for="imageInput">Select image file:</label>
-<input type="file" id="imageInput" accept="image/*">
-<label for="format">Choose format:</label>
-<select id="format">
-<option value="png">PNG</option>
-<option value="jpg">JPG</option>
-<option value="webp">WEBP</option>
-<option value="gif">GIF</option>
+<section class="converter-container">
+<div class="upload-area" id="uploadArea">
+<p>Drag & drop images here or click to upload</p>
+<input type="file" id="fileInput" multiple accept="image/png, image/jpeg, image/webp">
+</div>
+<div class="image-preview" id="preview"></div>
+<select id="formatSelect" style="margin-top:20px;padding:10px;border-radius:10px;">
+<option value="image/png">PNG</option>
+<option value="image/jpeg">JPG</option>
+<option value="image/webp">WEBP</option>
 </select>
-<button type="submit">Convert</button>
-</form>
-<div id="toolOutput" style="margin-top:20px;font-weight:500;"></div>
+<button id="convertBtn">Convert & Download</button>
 </section>
 
 <footer>
-<div class="container">
-<strong>EditorFox</strong>
-<p>Smarter tools for a faster digital workflow.</p>
+<p>EditorFox – Smarter tools for a faster digital workflow.</p>
 <p>Contact: <a href="mailto:editorfox.ef@gmail.com">editorfox.ef@gmail.com</a></p>
-<p><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></p>
-</div>
-<div class="footer-bottom">© 2025 EditorFox. All rights reserved.</div>
+<p>© 2025 EditorFox. All rights reserved.</p>
 </footer>
 
 <script>
-document.getElementById('toolForm').addEventListener('submit', function(e){
-e.preventDefault();
-const file = document.getElementById('imageInput').files[0];
-const format = document.getElementById('format').value;
-if(!file){document.getElementById('toolOutput').textContent='Please select an image.';return;}
-document.getElementById('toolOutput').textContent=`Image "${file.name}" will be converted to ${format.toUpperCase()} (functionality to be implemented).`;
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const formatSelect = document.getElementById('formatSelect');
+const convertBtn = document.getElementById('convertBtn');
+let images = [];
+
+uploadArea.addEventListener('dragover', e=>{e.preventDefault();uploadArea.classList.add('dragover');});
+uploadArea.addEventListener('dragleave', e=>{uploadArea.classList.remove('dragover');});
+uploadArea.addEventListener('drop', e=>{e.preventDefault();uploadArea.classList.remove('dragover');handleFiles(e.dataTransfer.files);});
+fileInput.addEventListener('change', e=>handleFiles(e.target.files));
+
+function handleFiles(files){
+  [...files].forEach(file=>{
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e=>{
+      const img = new Image();
+      img.src = e.target.result;
+      img.style.maxWidth = '200px';
+      img.style.margin='10px';
+      preview.appendChild(img);
+      images.push({img, name:file.name});
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+convertBtn.addEventListener('click', ()=>{
+  const format = formatSelect.value;
+  images.forEach(({img,name})=>{
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    ctx.drawImage(img,0,0);
+    canvas.toBlob(blob=>{
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name.split('.')[0]+format.replace('image/','.');
+      a.click();
+    }, format);
+  });
 });
 </script>
+
+<!-- SEO Long-form Article -->
+<section style="max-width:900px;margin:50px auto;padding:20px;">
+<article>
+<h1>Online Image Converter – How to Convert Images for Web & Social Media</h1>
+<p>Image conversion is crucial for digital workflows. Converting images between formats like JPG, PNG, and WEBP allows for optimal compression, quality, and browser compatibility. EditorFox provides a client-side image converter that ensures privacy and instant results.</p>
+<h2>Why Convert Images Online?</h2>
+<ul>
+<li>Quick format changes without software.</li>
+<li>Optimized images for web and social media.</li>
+<li>Client-side conversion ensures no data is uploaded.</li>
+</ul>
+<h2>Supported Formats</h2>
+<p>Convert JPG, PNG, WEBP formats seamlessly.</p>
+<h2>Benefits of Using EditorFox Image Converter</h2>
+<ul>
+<li>Fast and intuitive interface.</li>
+<li>Bulk conversion support.</li>
+<li>Download instantly without server upload.</li>
+<li>Maintains original image quality.</li>
+</ul>
+<h2>FAQs</h2>
+<h4>Is this converter free?</h4>
+<p>Yes, completely free and client-side.</p>
+<h4>Can I convert multiple images at once?</h4>
+<p>Yes, bulk conversion is supported.</p>
+<h4>Does it work on mobile?</h4>
+<p>Fully responsive and touch-friendly.</p>
+</article>
+</section>
 
 </body>
 </html>
