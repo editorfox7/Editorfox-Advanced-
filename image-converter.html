@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Converter – EditorFox</title>
+<meta name="description" content="Convert images between formats quickly and efficiently.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--white:#fff;--grey:#f3f3f3;--dark:#111;--muted:#666;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e6e6e6;z-index:100;}
+.nav{max-width:1200px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:20px;font-weight:700;display:flex;gap:8px;align-items:center;}
+nav a{margin-left:20px;font-weight:500;color:#333;}
+
+.tool-hero{padding:70px 20px;text-align:center;background:var(--grey);}
+.tool-hero h1{font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:12px;}
+.tool-hero p{max-width:650px;margin:auto;color:var(--muted);margin-bottom:30px;}
+.tool-form{max-width:600px;margin:auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06);}
+.tool-form label{display:block;margin-bottom:8px;font-weight:500;}
+.tool-form input, .tool-form select{width:100%;padding:12px;margin-bottom:16px;border-radius:8px;border:1px solid #ccc;font-size:14px;}
+.tool-form button{padding:12px 24px;border-radius:40px;font-weight:600;border:none;background:var(--dark);color:#fff;cursor:pointer;transition:.3s;}
+.tool-form button:hover{background:#000;}
+footer{background:#eaeaea;padding:50px 20px 20px;}
+footer .container{max-width:1200px;margin:auto;display:grid;gap:14px;}
+.footer-bottom{text-align:center;margin-top:20px;font-size:14px;color:#555;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">🦊 EditorFox</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="mailto:editorfox.ef@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="tool-hero">
+<h1>Image Converter</h1>
+<p>Convert images between formats quickly and efficiently.</p>
+</section>
+
+<section class="tool-form">
+<form id="toolForm">
+<label for="imageInput">Select image file:</label>
+<input type="file" id="imageInput" accept="image/*">
+<label for="format">Choose format:</label>
+<select id="format">
+<option value="png">PNG</option>
+<option value="jpg">JPG</option>
+<option value="webp">WEBP</option>
+<option value="gif">GIF</option>
+</select>
+<button type="submit">Convert</button>
+</form>
+<div id="toolOutput" style="margin-top:20px;font-weight:500;"></div>
+</section>
+
+<footer>
+<div class="container">
+<strong>EditorFox</strong>
+<p>Smarter tools for a faster digital workflow.</p>
+<p>Contact: <a href="mailto:editorfox.ef@gmail.com">editorfox.ef@gmail.com</a></p>
+<p><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></p>
+</div>
+<div class="footer-bottom">© 2025 EditorFox. All rights reserved.</div>
+</footer>
+
+<script>
+document.getElementById('toolForm').addEventListener('submit', function(e){
+e.preventDefault();
+const file = document.getElementById('imageInput').files[0];
+const format = document.getElementById('format').value;
+if(!file){document.getElementById('toolOutput').textContent='Please select an image.';return;}
+document.getElementById('toolOutput').textContent=`Image "${file.name}" will be converted to ${format.toUpperCase()} (functionality to be implemented).`;
+});
+</script>
+
+</body>
+</html>
