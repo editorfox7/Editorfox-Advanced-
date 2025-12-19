@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="EditorFox – Powerful online tools for editing, converting, calculating, and optimizing your digital workflow." />
+  <title>EditorFox – Smart Online Tools</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --bg-grey: #f5f5f5;
+      --text-black: #111111;
+      --text-grey: #666666;
+      --border-grey: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-white);
+      color: var(--text-black);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border-grey);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      font-weight: 500;
+      color: var(--text-grey);
+    }
+
+    nav a:hover {
+      color: var(--text-black);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: linear-gradient(180deg, #f7f7f7, #ffffff);
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: var(--text-grey);
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: 1px solid #000;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-secondary:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    /* ---------- Search ---------- */
+    .search-wrap {
+      max-width: 700px;
+      margin: -30px auto 60px;
+      padding: 0 20px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--border-grey);
+      font-size: 1rem;
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      padding: 60px 20px;
+    }
+
+    .section-grey {
+      background: var(--bg-grey);
+    }
+
+    .section-header {
+      max-width: 1200px;
+      margin: auto;
+      margin-bottom: 32px;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .section-header p {
+      color: var(--text-grey);
+      margin-top: 6px;
+    }
+
+    /* ---------- Cards ---------- */
+    .grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid var(--border-grey);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: .9rem;
+      color: var(--text-grey);
+      margin-bottom: 14px;
+    }
+
+    .card a {
+      font-weight: 600;
+      font-size: .9rem;
+      color: #000;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--bg-grey);
+      padding: 40px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    footer p {
+      color: var(--text-grey);
+      font-size: .9rem;
+    }
+
+    footer a {
+      font-weight: 500;
+      margin-right: 16px;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">🦊 EditorFox</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Tools</a>
+      <a href="mailto:editorfox.ef@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Powerful Online Tools. One Smart Platform.</h1>
+  <p>Edit, convert, calculate, optimize, and simplify your digital tasks — instantly and free.</p>
+  <div class="hero-actions">
+    <a href="#tools" class="btn btn-primary">Explore Tools</a>
+    <a href="#tools" class="btn btn-secondary">Browse Categories</a>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <input type="text" placeholder="Search a tool…" />
+</div>
+
+<!-- Example Category -->
+<section id="tools">
+  <div class="section-header">
+    <h2>🖼 Image Tools</h2>
+    <p>Edit, convert, and optimize images effortlessly.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Image Converter</h3><p>Convert images to popular formats.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>Image Compressor</h3><p>Reduce image size without quality loss.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>Image Resizer</h3><p>Resize images to custom dimensions.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>Image to Text (OCR)</h3><p>Extract text from images.</p><a href="#">Use Tool →</a></div>
+  </div>
+</section>
+
+<section class="section-grey">
+  <div class="section-header">
+    <h2>📄 Document Tools</h2>
+    <p>Manage and convert documents securely.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>PDF to Word</h3><p>Convert PDFs into editable documents.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>PDF Compressor</h3><p>Reduce PDF file size easily.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>PDF Merger</h3><p>Merge multiple PDFs into one.</p><a href="#">Use Tool →</a></div>
+    <div class="card"><h3>eSign PDF</h3><p>Sign documents digitally.</p><a href="#">Use Tool →</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>EditorFox</strong>
+      <p>Smarter tools for a faster digital workflow.</p>
+    </div>
+    <div>
+      <p>Contact: <a href="mailto:editorfox.ef@gmail.com">editorfox.ef@gmail.com</a></p>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
