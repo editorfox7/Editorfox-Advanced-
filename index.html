@@ -1,246 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EditorFox – Powerful online tools for editing, converting, calculating, and optimizing your digital workflow." />
-  <title>EditorFox – Smart Online Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>EditorFox – Smart Online Tools Platform</title>
+<meta name="description" content="EditorFox offers powerful online tools to edit, convert, calculate, optimize, and simplify your digital workflow instantly and free.">
 
-  <style>
-    :root {
-      --bg-white: #ffffff;
-      --bg-grey: #f5f5f5;
-      --text-black: #111111;
-      --text-grey: #666666;
-      --border-grey: #e5e5e5;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+:root{
+--white:#ffffff;
+--grey:#f3f3f3;
+--dark:#111111;
+--muted:#666;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-white);
-      color: var(--text-black);
-      line-height: 1.6;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:var(--white);
+color:var(--dark);
+line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+header{
+position:sticky;
+top:0;
+background:#fff;
+border-bottom:1px solid #e6e6e6;
+z-index:100;
+}
+.nav{
+max-width:1200px;
+margin:auto;
+padding:14px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+.logo{
+font-size:20px;
+font-weight:700;
+display:flex;
+gap:8px;
+align-items:center;
+}
+nav a{
+margin-left:20px;
+font-weight:500;
+color:#333;
+}
 
-    /* ---------- Header ---------- */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid var(--border-grey);
-    }
+.hero{
+padding:90px 20px 70px;
+text-align:center;
+background:linear-gradient(180deg,#f6f6f6,#fff);
+}
+.hero h1{
+font-size:clamp(28px,5vw,44px);
+font-weight:700;
+}
+.hero p{
+max-width:650px;
+margin:16px auto 30px;
+color:var(--muted);
+}
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:40px;
+font-weight:600;
+border:2px solid var(--dark);
+margin:6px;
+}
+.primary{background:var(--dark);color:#fff}
+.secondary{background:#fff}
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 14px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.search-box{
+max-width:600px;
+margin:40px auto 0;
+}
+.search-box input{
+width:100%;
+padding:18px;
+font-size:16px;
+border-radius:40px;
+border:1px solid #ccc;
+}
 
-    .logo {
-      font-weight: 700;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+.section{
+padding:70px 20px;
+background:var(--grey);
+}
+.section.white{background:#fff}
+.container{
+max-width:1200px;
+margin:auto;
+}
+.section h2{
+font-size:26px;
+margin-bottom:8px;
+}
+.section p{
+color:var(--muted);
+margin-bottom:30px;
+}
 
-    nav a {
-      margin-left: 20px;
-      font-weight: 500;
-      color: var(--text-grey);
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
 
-    nav a:hover {
-      color: var(--text-black);
-    }
+.card{
+background:#fff;
+padding:20px;
+border-radius:16px;
+box-shadow:0 8px 25px rgba(0,0,0,.06);
+transition:.3s ease;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+.card h3{
+font-size:16px;
+margin-bottom:8px;
+}
+.card p{
+font-size:14px;
+color:#666;
+margin-bottom:14px;
+}
+.card a{
+font-weight:600;
+font-size:14px;
+}
 
-    /* ---------- Hero ---------- */
-    .hero {
-      background: linear-gradient(180deg, #f7f7f7, #ffffff);
-      padding: 80px 20px 60px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      color: var(--text-grey);
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.05rem;
-    }
-
-    .hero-actions {
-      margin-top: 32px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      border: 1px solid #000;
-      transition: all 0.25s ease;
-    }
-
-    .btn-primary {
-      background: #000;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .btn-secondary {
-      background: #fff;
-      color: #000;
-    }
-
-    .btn-secondary:hover {
-      background: #000;
-      color: #fff;
-    }
-
-    /* ---------- Search ---------- */
-    .search-wrap {
-      max-width: 700px;
-      margin: -30px auto 60px;
-      padding: 0 20px;
-    }
-
-    .search-wrap input {
-      width: 100%;
-      padding: 16px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--border-grey);
-      font-size: 1rem;
-    }
-
-    /* ---------- Sections ---------- */
-    section {
-      padding: 60px 20px;
-    }
-
-    .section-grey {
-      background: var(--bg-grey);
-    }
-
-    .section-header {
-      max-width: 1200px;
-      margin: auto;
-      margin-bottom: 32px;
-    }
-
-    .section-header h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-
-    .section-header p {
-      color: var(--text-grey);
-      margin-top: 6px;
-    }
-
-    /* ---------- Cards ---------- */
-    .grid {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 20px;
-      border: 1px solid var(--border-grey);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
-    .card p {
-      font-size: .9rem;
-      color: var(--text-grey);
-      margin-bottom: 14px;
-    }
-
-    .card a {
-      font-weight: 600;
-      font-size: .9rem;
-      color: #000;
-    }
-
-    /* ---------- Footer ---------- */
-    footer {
-      background: var(--bg-grey);
-      padding: 40px 20px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    footer p {
-      color: var(--text-grey);
-      font-size: .9rem;
-    }
-
-    footer a {
-      font-weight: 500;
-      margin-right: 16px;
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (min-width: 768px) {
-      .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-  </style>
+footer{
+background:#eaeaea;
+padding:50px 20px 20px;
+}
+footer .container{
+max-width:1200px;
+margin:auto;
+display:grid;
+gap:14px;
+}
+.footer-bottom{
+text-align:center;
+margin-top:20px;
+font-size:14px;
+color:#555;
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -255,57 +173,143 @@
 </header>
 
 <section class="hero">
-  <h1>Powerful Online Tools. One Smart Platform.</h1>
-  <p>Edit, convert, calculate, optimize, and simplify your digital tasks — instantly and free.</p>
-  <div class="hero-actions">
-    <a href="#tools" class="btn btn-primary">Explore Tools</a>
-    <a href="#tools" class="btn btn-secondary">Browse Categories</a>
-  </div>
-</section>
-
-<div class="search-wrap">
-  <input type="text" placeholder="Search a tool…" />
+<h1>Powerful Online Tools. One Smart Platform.</h1>
+<p>Edit, convert, calculate, optimize, and simplify your digital tasks — instantly and free.</p>
+<a class="btn primary" href="#">Explore Tools</a>
+<a class="btn secondary" href="#">Browse Categories</a>
+<div class="search-box">
+<input type="text" placeholder="Search a tool…">
 </div>
-
-<!-- Example Category -->
-<section id="tools">
-  <div class="section-header">
-    <h2>🖼 Image Tools</h2>
-    <p>Edit, convert, and optimize images effortlessly.</p>
-  </div>
-  <div class="grid">
-    <div class="card"><h3>Image Converter</h3><p>Convert images to popular formats.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>Image Compressor</h3><p>Reduce image size without quality loss.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>Image Resizer</h3><p>Resize images to custom dimensions.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>Image to Text (OCR)</h3><p>Extract text from images.</p><a href="#">Use Tool →</a></div>
-  </div>
 </section>
 
-<section class="section-grey">
-  <div class="section-header">
-    <h2>📄 Document Tools</h2>
-    <p>Manage and convert documents securely.</p>
-  </div>
-  <div class="grid">
-    <div class="card"><h3>PDF to Word</h3><p>Convert PDFs into editable documents.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>PDF Compressor</h3><p>Reduce PDF file size easily.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>PDF Merger</h3><p>Merge multiple PDFs into one.</p><a href="#">Use Tool →</a></div>
-    <div class="card"><h3>eSign PDF</h3><p>Sign documents digitally.</p><a href="#">Use Tool →</a></div>
-  </div>
+<!-- IMAGE TOOLS -->
+<section class="section white">
+<div class="container">
+<h2>🖼 Image Tools</h2>
+<p>Powerful image editing and optimization tools.</p>
+<div class="grid">
+<div class="card"><h3>Image Converter</h3><p>Convert image formats.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Image Compressor</h3><p>Reduce image size.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Image Resizer</h3><p>Resize images.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Image Cropper</h3><p>Crop images precisely.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Image to Text (OCR)</h3><p>Extract text from images.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Image Rotator / Flipper</h3><p>Rotate or flip images.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- DOCUMENT TOOLS -->
+<section class="section">
+<div class="container">
+<h2>📄 Document Tools</h2>
+<div class="grid">
+<div class="card"><h3>PDF to Word / Word to PDF</h3><p>Convert documents.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>PDF Compressor</h3><p>Compress PDF files.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>PDF Merger & Splitter</h3><p>Merge or split PDFs.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Document Converter</h3><p>Convert document formats.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>PDF Lock / Unlock</h3><p>Secure PDF files.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>eSign PDF</h3><p>Sign PDF documents.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- CALCULATORS -->
+<section class="section white">
+<div class="container">
+<h2>🧮 Calculator Tools</h2>
+<div class="grid">
+<div class="card"><h3>Scientific Calculator</h3><p>Advanced calculations.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Age Calculator</h3><p>Calculate age.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>BMI Calculator</h3><p>Body mass index.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Loan EMI Calculator</h3><p>Loan EMI calculations.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>GST Calculator</h3><p>GST calculation tool.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Currency Converter</h3><p>Convert currencies.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- TEXT TOOLS -->
+<section class="section">
+<div class="container">
+<h2>🔤 Text Tools</h2>
+<div class="grid">
+<div class="card"><h3>Text Case Converter</h3><p>Change text case.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Word & Character Counter</h3><p>Count words.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Remove Duplicate Lines</h3><p>Clean duplicate lines.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Text Sorter</h3><p>Sort text.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Text Reverser</h3><p>Reverse text.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Text Encryptor / Decryptor</h3><p>Secure text.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- WEB / DEV TOOLS -->
+<section class="section white">
+<div class="container">
+<h2>🌐 Web / Developer Tools</h2>
+<div class="grid">
+<div class="card"><h3>HTML / CSS / JS Minifier</h3><p>Minify code.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>JSON Formatter & Validator</h3><p>Format JSON.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Base64 Encoder / Decoder</h3><p>Encode or decode.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>URL Encoder / Decoder</h3><p>Encode URLs.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Color Picker & Converter</h3><p>Pick colors.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Regex Tester</h3><p>Test regex.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- COLOR TOOLS -->
+<section class="section">
+<div class="container">
+<h2>🎨 Color Tools</h2>
+<div class="grid">
+<div class="card"><h3>Color Picker from Image</h3><p>Extract colors.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>HEX to RGB Converter</h3><p>Convert colors.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Gradient Generator</h3><p>Create gradients.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Contrast Checker</h3><p>Accessibility check.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Palette Generator</h3><p>Generate palettes.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Color Blindness Simulator</h3><p>Preview accessibility.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- SEO TOOLS -->
+<section class="section white">
+<div class="container">
+<h2>🌍 SEO & Marketing Tools</h2>
+<div class="grid">
+<div class="card"><h3>Keyword Density Checker</h3><p>Analyze keywords.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Meta Tag Analyzer</h3><p>Analyze meta tags.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Word Counter</h3><p>SEO word count.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
+</section>
+
+<!-- UTILITY TOOLS -->
+<section class="section">
+<div class="container">
+<h2>🛠 Utility Tools</h2>
+<div class="grid">
+<div class="card"><h3>QR Code Generator & Scanner</h3><p>Create QR codes.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Barcode Generator</h3><p>Create barcodes.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>UUID Generator</h3><p>Generate UUIDs.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Unit Converter</h3><p>Convert units.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Time Zone Converter</h3><p>Convert time zones.</p><a href="#">Use Tool</a></div>
+<div class="card"><h3>Random Number / Password Generator</h3><p>Generate secure data.</p><a href="#">Use Tool</a></div>
+</div>
+</div>
 </section>
 
 <footer>
-  <div class="footer-inner">
-    <div>
-      <strong>EditorFox</strong>
-      <p>Smarter tools for a faster digital workflow.</p>
-    </div>
-    <div>
-      <p>Contact: <a href="mailto:editorfox.ef@gmail.com">editorfox.ef@gmail.com</a></p>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-    </div>
-  </div>
+<div class="container">
+<strong>EditorFox</strong>
+<p>Smarter tools for a faster digital workflow.</p>
+<p>Contact: <a href="mailto:editorfox.ef@gmail.com">editorfox.ef@gmail.com</a></p>
+<p><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></p>
+</div>
+<div class="footer-bottom">
+© 2025 EditorFox. All rights reserved.
+</div>
 </footer>
 
 </body>
